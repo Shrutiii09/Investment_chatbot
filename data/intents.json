@@ -1,0 +1,103 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey there",
+        "What's up?",
+        "Good morning"
+      ],
+      "responses": [
+        "Hello! How can I assist with your investments today?",
+        "Hi there! Need help choosing where to invest?"
+      ]
+    },
+    {
+      "tag": "investment_advice",
+      "patterns": [
+        "Where should I invest ₹10000?",
+        "Suggest some investment options",
+        "Best mutual fund for beginners?",
+        "I have ₹5000 to invest",
+        "What are low-risk investments?"
+      ],
+      "responses": [
+        "It depends on your risk profile. For low risk, consider fixed deposits or debt mutual funds. For moderate risk, balanced mutual funds may work.",
+        "Can you tell me your investment duration and risk level (low/medium/high)?"
+      ]
+    },
+    {
+      "tag": "stock_price",
+      "patterns": [
+        "What is the current price of TCS?",
+        "Tell me today’s stock price of Infosys",
+        "Share price of Reliance",
+        "Get stock price for HDFC Bank",
+        "Share price of Reliance",
+        "Price of Nifty index today",
+        "Get price of Infosys",
+        "Tell me stock price of HDFC",
+        "What's the Sensex value?"
+      ],
+      "responses": [
+        "Sure, fetching the latest stock price...",
+        "Let me look that up for you."
+      ]
+    },
+    {
+  "tag": "gold_price",
+  "patterns": [
+    "What is the current gold price?",
+    "Gold price today",
+    "Tell me the gold rate",
+    "Gold value now",
+    "What’s the rate of gold in India?"
+  ],
+  "responses": [
+    "Let me check the latest gold price for you...",
+    "Sure, fetching today's gold rate."
+  ]
+},
+{
+  "tag": "sip_calculator",
+  "patterns": [
+    "What will I get if I invest 5000 per month for 10 years at 12% interest?",
+    "Calculate SIP returns for ₹2000 for 5 years at 10%",
+    "How much will I get from SIP if I invest monthly?",
+    "Tell me SIP calculation for 1000 rupees",
+    "Monthly SIP calculator"
+  ],
+  "responses": [
+    "Sure, I can calculate your SIP returns! Please specify monthly amount, duration (in years), and expected annual interest rate."
+  ]
+},
+{
+  "tag": "fd_calculator",
+  "patterns": [
+    "Calculate FD for ₹50000 at 6.5% for 5 years",
+    "What will I get if I invest 30000 in FD for 3 years at 7%",
+    "FD maturity for ₹10000 at 8% for 2 years",
+    "Fixed deposit calculator",
+    "Tell me FD return on 60000 in 4 years at 6%"
+  ],
+  "responses": [
+    "Sure, let me calculate your Fixed Deposit maturity value."
+  ]
+},
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Thanks, goodbye",
+        "Talk to you soon"
+      ],
+      "responses": [
+        "Goodbye! Happy investing!",
+        "Take care! Let me know if you need more help."
+      ]
+    }
+  ]
+}
