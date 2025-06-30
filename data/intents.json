@@ -86,6 +86,19 @@
     "Sure, let me calculate your Fixed Deposit maturity value."
   ]
 },
+{
+  "tag": "mutual_fund_nav",
+  "patterns": [
+    "NAV of Axis Bluechip Fund",
+    "What is the NAV of SBI Small Cap",
+    "Tell me NAV of HDFC Midcap",
+    "Price of ICICI Prudential fund",
+    "Fund value of Nippon Growth fund"
+  ],
+  "responses": [
+    "Let me check the NAV for you..."
+  ]
+},
     {
       "tag": "goodbye",
       "patterns": [

@@ -7,6 +7,61 @@ import matplotlib.pyplot as plt
 import io
 import base64
 
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import re
+import os
+
+from difflib import get_close_matches
+NAV_DF = None
+
+def load_nav_data():
+    global NAV_DF
+    if NAV_DF is None:
+        path = os.path.join("data", "AMFI_NAV.txt")
+        df = pd.read_csv(
+            path,
+            sep=";",
+            header=None,
+            names=[
+                "Scheme Code", "ISIN-Div Payout/ Growth", "ISIN-Div Reinvestment",
+                "Scheme Name", "Net Asset Value", "Date", "Dummy1", "Dummy2"
+            ],
+            skiprows=1,
+            encoding="latin1",
+            engine="python"
+        )
+        df["Scheme Name Clean"] = df["Scheme Name"].str.lower()
+        NAV_DF = df
+    return NAV_DF
+
+def clean_query(text):
+    """Sanitize input query for better matching."""
+    text = text.lower()
+    patterns = [
+        r"\bnav\b", r"\bnav of\b", r"\bnav for\b", r"\bvalue of\b", r"\bprice of\b",
+        r"\btell me\b", r"\bwhat is\b", r"\blatest\b", r"\bmutual fund\b", r"\bfund\b"
+    ]
+    for pattern in patterns:
+        text = re.sub(pattern, '', text)
+    return text.strip()
+
+
+def get_mutual_fund_nav(query):
+    df = load_nav_data()
+    fund_query = clean_query(query)
+
+    # Get top 1 close match using difflib
+    matches = get_close_matches(fund_query, df["Scheme Name Clean"], n=1, cutoff=0.5)
+    
+    if not matches:
+        return f"❌ Sorry, no NAV found for **'{fund_query.title()}'**."
+
+    # Return result for best match
+    match_name = matches[0]
+    row = df[df["Scheme Name Clean"] == match_name].iloc[0]
+    return f"The latest NAV for **{row['Scheme Name']}** is ₹{row['Net Asset Value']} as on {row['Date']}."
 
 def get_gold_price():
     try:
